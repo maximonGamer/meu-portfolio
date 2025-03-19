@@ -170,10 +170,9 @@ export default function Home() {
               className="rounded-lg shadow-lg"
             />
           </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: App de Relacionamento</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a Verdade</h3>
           <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-            Aplicativo de relacionamento com foco em criar conexões reais entre pessoas, com funcionalidades de
-            perfis personalizados e interação em tempo real. Utiliza React Native para o desenvolvimento multiplataforma.
+          O site Jornal A Verdade foi desenvolvido com o objetivo de oferecer uma plataforma moderna e acessível para a divulgação de notícias e informações relevantes ao público. O projeto foi criado para garantir uma experiência intuitiva e dinâmica aos leitores, permitindo fácil navegação e acesso rápido às principais manchetes foi realizado com HTML , CSS , CSS3, JAVA SCRIPT.
           </p>
         </div>
       </section>
