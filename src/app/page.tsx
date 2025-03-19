@@ -54,7 +54,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Seções do site (Sobre Mim, ículo, ProjeCurrtos, Contato) */}
+      {/* Seções do site (Sobre Mim, Currículo, Projetos, Contato) */}
 
       {/* Sobre Mim */}
       <section id="about" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
@@ -85,7 +85,7 @@ export default function Home() {
         </p>
         <div className="flex justify-center gap-6">
           <Link
-            href="https://1drv.ms/w/c/8fb84f1a95fa31a5/EY_pGMApAltMia9LFgCVuZYBciD-k4O1cEQDP5fglloQ-Q?e=PBVbTN"
+            href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2025.docx"
             download
             className="text-blue-500 hover:underline"
           >
@@ -151,58 +151,55 @@ export default function Home() {
             informações sobre o funcionamento do sistema. Utiliza Flutter para o front-end e Firebase para o back-end.
           </p>
         </div>
- {/* Projeto 3 */}
- <div className="flex flex-col items-center gap-8 mb-16">
+
+        {/* Projeto 3 */}
+        <div className="flex flex-col items-center gap-8 mb-16">
           <div className="flex gap-4">
             <Image
-              src="/projeto3-1.svg" // Primeira imagem do Projeto 2 em SVG
-              alt="Projeto 2 - Tela 1"
+              src="/projeto3-1.svg" // Primeira imagem do Projeto 3 em SVG
+              alt="Projeto 3 - Tela 1"
               width={400}
               height={250}
               className="rounded-lg shadow-lg"
             />
             <Image
-              src="/projeto3-2.svg" // Segunda imagem do Projeto 2 em SVG
-              alt="Projeto 2 - Tela 2"
+              src="/projeto3-2.svg" // Segunda imagem do Projeto 3 em SVG
+              alt="Projeto 3 - Tela 2"
               width={400}
               height={250}
               className="rounded-lg shadow-lg"
             />
           </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a verdade</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a Verdade</h3>
           <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-          O "Jornal a Verdade" é uma plataforma de notícias desenvolvida utilizando HTML, CSS e JavaScript. O objetivo
-  do projeto é oferecer aos usuários uma experiência de leitura agradável e prática, com um design simples e funcional. 
-  A aplicação exibe notícias de diversas categorias e permite aos usuários navegar facilmente entre elas. O sistema também
-  oferece funcionalidades interativas, como a possibilidade de comentar nas matérias e compartilhar conteúdo. A
-  estrutura foi construída de forma responsiva, garantindo uma boa experiência em dispositivos móveis e desktop.
+            O "Jornal a Verdade" é uma plataforma de notícias desenvolvida utilizando HTML, CSS e JavaScript. O objetivo
+            do projeto é oferecer aos usuários uma experiência de leitura agradável e prática, com um design simples e funcional. 
+            A aplicação exibe notícias de diversas categorias e permite aos usuários navegar facilmente entre elas. O sistema também
+            oferece funcionalidades interativas, como a possibilidade de comentar nas matérias e compartilhar conteúdo.
           </p>
         </div>
-        
-
-        {/* Projetos adicionais podem ser adicionados de forma semelhante */}
       </section>
 
       {/* Contato */}
       <section id="contact" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-  <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Contato</h2>
-  <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
-    🚀 Vamos conectar?  
-    Estou sempre aberto a novas ideias e oportunidades. Se você gostou do meu trabalho ou tem algo interessante para compartilhar, não perca tempo! Me envie uma mensagem por aqui ou diretamente no WhatsApp.  
-    Não vejo a hora de saber sua opinião ou de colaborar em algum projeto inovador!  
-  </p>
-  <div className="flex justify-center gap-6">
-    <a href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/" className="text-blue-500 hover:underline">
-      LinkedIn
-    </a>
-    <a href="https://github.com/maximonGamer" className="text-blue-500 hover:underline">
-      GitHub
-    </a>
-    <a href="https://wa.me/5511998115005" className="text-blue-500 hover:underline">
-      WhatsApp
-    </a>
-  </div>
-</section>
+        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Contato</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
+          🚀 Vamos conectar?  
+          Estou sempre aberto a novas ideias e oportunidades. Se você gostou do meu trabalho ou tem algo interessante para compartilhar, não perca tempo! Me envie uma mensagem por aqui ou diretamente no WhatsApp.  
+          Não vejo a hora de saber sua opinião ou de colaborar em algum projeto inovador!
+        </p>
+        <div className="flex justify-center gap-6">
+          <a href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/" className="text-blue-500 hover:underline">
+            LinkedIn
+          </a>
+          <a href="https://github.com/maximonGamer" className="text-blue-500 hover:underline">
+            GitHub
+          </a>
+          <a href="https://wa.me/5511998115005" className="text-blue-500 hover:underline">
+            WhatsApp
+          </a>
+        </div>
+      </section>
 
     </div>
   );

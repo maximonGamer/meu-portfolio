@@ -38,7 +38,7 @@ export default function RootLayout({
               Tecnologia Vision
             </div>
             <div className="mt-2 text-lg text-gray-400 italic">
-              "Transformando ideias em soluções inovadoras, com foco em excelência e resultados."
+              &ldquo;Transformando ideias em soluções inovadoras, com foco em excelência e resultados.&rdquo;
             </div>
           </div>
         </header>
