@@ -54,11 +54,11 @@ export default function RootLayout({
             {[ 
               { name: "GitHub", url: "https://github.com/maximonGamer" },
               { name: "LinkedIn", url: "https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/" },
-              { name: "Telefone", url: "https://wa.me/5511998115005" }, // Substituí o link de email pelo número de telefone
+              { name: "WhatsApp", url: "https://wa.me/5511998115005" }, // Substitui o "Telefone" por WhatsApp
             ].map((item, index) => (
               <a
                 key={index}
-                href={item.name === "Telefone" ? `tel:${item.url}` : item.url} // Corrigido para usar 'tel:' no telefone
+                href={item.url} // Não é necessário modificar o link de WhatsApp ou GitHub
                 className="hover:text-indigo-400 transition-all"
               >
                 {item.name}

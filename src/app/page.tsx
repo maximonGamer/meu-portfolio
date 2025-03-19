@@ -170,12 +170,10 @@ export default function Home() {
               className="rounded-lg shadow-lg"
             />
           </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a Verdade</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: App de Relacionamento</h3>
           <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-            O "Jornal a Verdade" é uma plataforma de notícias desenvolvida utilizando HTML, CSS e JavaScript. O objetivo
-            do projeto é oferecer aos usuários uma experiência de leitura agradável e prática, com um design simples e funcional. 
-            A aplicação exibe notícias de diversas categorias e permite aos usuários navegar facilmente entre elas. O sistema também
-            oferece funcionalidades interativas, como a possibilidade de comentar nas matérias e compartilhar conteúdo.
+            Aplicativo de relacionamento com foco em criar conexões reais entre pessoas, com funcionalidades de
+            perfis personalizados e interação em tempo real. Utiliza React Native para o desenvolvimento multiplataforma.
           </p>
         </div>
       </section>
@@ -184,23 +182,34 @@ export default function Home() {
       <section id="contact" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
         <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Contato</h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
-          🚀 Vamos conectar?  
-          Estou sempre aberto a novas ideias e oportunidades. Se você gostou do meu trabalho ou tem algo interessante para compartilhar, não perca tempo! Me envie uma mensagem por aqui ou diretamente no WhatsApp.  
-          Não vejo a hora de saber sua opinião ou de colaborar em algum projeto inovador!
+          Fique à vontade para me enviar uma mensagem! Se você tem um projeto ou ideia interessante, adoraria conversar
+          sobre como podemos colaborar.
         </p>
+
         <div className="flex justify-center gap-6">
-          <a href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/" className="text-blue-500 hover:underline">
+          <Link
+            href="https://www.linkedin.com/in/claudiolucas"
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
             LinkedIn
-          </a>
-          <a href="https://github.com/maximonGamer" className="text-blue-500 hover:underline">
-            GitHub
-          </a>
-          <a href="https://wa.me/5511998115005" className="text-blue-500 hover:underline">
+          </Link>
+          <Link
+            href="https://instagram.com/claudiolucas"
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
+            Instagram
+          </Link>
+          <Link
+            href="https://wa.me/5511999999999"
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
             WhatsApp
-          </a>
+          </Link>
         </div>
       </section>
-
     </div>
   );
 }
