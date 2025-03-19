@@ -188,21 +188,21 @@ export default function Home() {
 
         <div className="flex justify-center gap-6">
           <Link
-            href="https://www.linkedin.com/in/claudiolucas"
+            href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/"
             target="_blank"
             className="text-blue-500 hover:underline"
           >
             LinkedIn
           </Link>
           <Link
-            href="https://instagram.com/claudiolucas"
+            href="https://www.instagram.com/claudio_ribeirofh/"
             target="_blank"
             className="text-blue-500 hover:underline"
           >
             Instagram
           </Link>
           <Link
-            href="https://wa.me/5511999999999"
+            href="https://wa.me/5511998115005"
             target="_blank"
             className="text-blue-500 hover:underline"
           >
