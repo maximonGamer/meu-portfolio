@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8 font-[family-name:var(--font-geist-sans)] bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen p-8 font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <main className="flex flex-col gap-12 items-center sm:items-start text-center sm:text-left max-w-7xl mx-auto">
         {/* Foto */}
         <div className="flex justify-center mb-8">
@@ -172,7 +172,7 @@ export default function Home() {
           </div>
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a Verdade</h3>
           <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-          O site Jornal A Verdade foi desenvolvido com o objetivo de oferecer uma plataforma moderna e acessível para a divulgação de notícias e informações relevantes ao público. O projeto foi criado para garantir uma experiência intuitiva e dinâmica aos leitores, permitindo fácil navegação e acesso rápido às principais manchetes foi realizado com HTML , CSS , CSS3, JAVA SCRIPT.
+            O site Jornal A Verdade foi desenvolvido com o objetivo de oferecer uma plataforma moderna e acessível para a divulgação de notícias e informações relevantes ao público. O projeto foi criado para garantir uma experiência intuitiva e dinâmica aos leitores, permitindo fácil navegação e acesso rápido às principais manchetes foi realizado com HTML , CSS , CSS3, JAVA SCRIPT.
           </p>
         </div>
       </section>
