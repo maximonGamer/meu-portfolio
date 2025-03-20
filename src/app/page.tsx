@@ -85,7 +85,7 @@ export default function Home() {
         </p>
         <div className="flex justify-center gap-6">
           <Link
-            href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2025.docx"
+            href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2025 (3).docx"
             download
             className="text-blue-500 hover:underline"
           >
