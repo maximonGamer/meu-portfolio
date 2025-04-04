@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
           <BlackHoleEffect />
           <h1 className="absolute top-1/2 transform -translate-y-1/2 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 animate-pulse">
-            Criando <span className="text-indigo-400">experiências inovadoras</span> em tecnologia
+            Criando <span className="text-indigo-400">Experiências inovadoras</span> em Tecnologia Vision 
           </h1>
           <p className="absolute top-3/4 text-gray-400 max-w-lg text-center px-6">
             Engenheiro de Software Full Stack com experiência em Web, Mobile e Software. Especialista em tecnologias modernas e focado em qualidade e performance.
