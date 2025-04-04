@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background-light: #ffffff;
-  --foreground-light: #171717;
-  --background-dark: #0a0a0a;
-  --foreground-dark: #ededed;
-  --highlight: #000000; /* Cor para destacar elementos */
-  --border-radius: 10px;
+  --background-light: #f9f9f9;
+  --foreground-light: #111111;
+  --background-dark: #0d0d0d;
+  --foreground-dark: #e5e5e5;
+  --surface-dark: #1a1a1a;
+  --highlight: #6366f1;
+  --border-radius: 12px;
   --transition-speed: 0.3s ease-in-out;
 }
 
@@ -17,12 +18,11 @@
   }
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-  -webkit-font-smoothing: antialiased;
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: var(--background-light);
+    --color-foreground: var(--foreground-light);
+  }
 }
 
 *,
@@ -36,10 +36,117 @@ html {
   font-size: 16px;
 }
 
+body {
+  background: radial-gradient(circle at 20% 30%, #121212 0%, #0a0a0a 100%);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  -webkit-font-smoothing: antialiased;
+}
+
 a {
   transition: color var(--transition-speed);
 }
 
 a:hover {
   color: var(--highlight);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-speed);
+}
+
+input,
+textarea {
+  background-color: var(--surface-dark);
+  color: var(--color-foreground);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  transition: border var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--highlight);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px var(--highlight);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--highlight);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--highlight);
+  }
+}
+
+.glow-on-hover:hover {
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Efeito 3D ao passar o mouse */
+.hover-3d {
+  transition: all 0.3s ease;
+  transform: perspective(600px) rotateX(0deg) rotateY(0deg);
+}
+.hover-3d:hover {
+  transform: perspective(600px) rotateX(3deg) rotateY(-3deg) scale(1.02);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .glass {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .glass {
+    padding: 1rem;
+  }
 }

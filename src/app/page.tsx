@@ -29,27 +29,27 @@ export default function Home() {
         <div className="flex gap-8 justify-center mt-6">
           <Link
             href="#about"
-            className="rounded-full px-8 py-4 text-lg font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 ease-in-out"
+            
           >
-            Sobre Mim
+           
           </Link>
           <Link
             href="#curriculum"
-            className="rounded-full px-8 py-4 text-lg font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 ease-in-out"
+            
           >
-            Currículo
+            
           </Link>
           <Link
             href="#projects"
-            className="rounded-full px-8 py-4 text-lg font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 ease-in-out"
+            
           >
-            Projetos
+            
           </Link>
           <Link
             href="#contact"
-            className="rounded-full px-8 py-4 text-lg font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 ease-in-out"
+            
           >
-            Contato
+            
           </Link>
         </div>
       </main>
