@@ -22,7 +22,7 @@ export default function CodeRainBackground() {
     const ctx = canvas.getContext("2d")!;
     const codeDrops: CodeDrop[] = [];
     const chars =
-      "1212321412335564645677547654786568445634234124124ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?{}[]|\\:;,.~`'\"";
+      "12123214123335564645677547654786568445634234124124ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?{}[]|\\:;,.~`'\"";
     const numDrops = 800; // Aumentando o número de gotas
 
     // Função para gerar as gotas de código
