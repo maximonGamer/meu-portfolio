@@ -3,7 +3,7 @@
 import React, { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useTexture } from '@react-three/drei';
-import { TextureLoader, Color } from 'three';
+import { TextureLoader } from 'three';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
@@ -138,8 +138,7 @@ function Starfield() {
             }
           `,
           transparent: true,
-        }]}
-      />
+        }]}/>
     </points>
   );
 }
@@ -194,7 +193,7 @@ export default function HeroSection() {
           {Array.from({ length: 15 }).map((_, i) => (
             <Meteor
               key={i}
-              startPosition={[
+              startPosition={[ 
                 THREE.MathUtils.randFloatSpread(100),
                 Math.random() * 20 + 10,
                 THREE.MathUtils.randFloatSpread(100)
