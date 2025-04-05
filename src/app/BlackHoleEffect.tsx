@@ -65,6 +65,7 @@ function GlowRing() {
       meshRef.current.rotation.z += 0.001;
     }
   });
+
   return (
     <mesh ref={meshRef}>
       <ringGeometry args={[1.6, 2.5, 64]} />
