@@ -42,9 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="description" content="Portfólio de Claudio Lucas - Desenvolvedor Full Stack" />
       </head>
       <body
-        className={`
-          ${geistSans.variable} ${geistMono.variable} antialiased bg-[#0D0D0D] text-gray-300
-        `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0D0D0D] text-gray-300`}
       >
         <UniverseBackground />
         <div className="black-hole" />
@@ -58,12 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <div className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
           <BlackHoleEffect />
-          <h1 className="absolute top-1/2 transform -translate-y-1/2 text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500 animate-pulse">
-            Criando <span className="text-indigo-400">Experiências inovadoras</span> em Tecnologia Vision 
-          </h1>
-          <p className="absolute top-3/4 text-gray-400 max-w-lg text-center px-6">
-            Engenheiro de Software Full Stack com experiência em Web, Mobile e Software. Especialista em tecnologias modernas e focado em qualidade e performance.
-          </p>
         </div>
 
         <section className="w-full flex flex-wrap justify-center gap-6 py-12 bg-[#121212]">
@@ -99,6 +91,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <FaWhatsapp />
           </a>
         </footer>
+
+        <div className="copyright-warning text-center py-6 text-sm text-gray-400 mt-12">
+        <p className="text-center text-sm text-gray-400 mt-6">
+  <span className="block mb-2 text-gray-300">© 2025 Claudio Lucas - Tecnologia Vision . Todos os direitos reservados.</span>
+  <span className="block font-bold text-gray-200">
+    Este conteúdo é protegido por direitos autorais e não pode ser copiado, reproduzido ou distribuído sem permissão.
+  </span>
+</p>
+        </div>
       </body>
     </html>
   );

@@ -1,211 +1,119 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8 font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <main className="flex flex-col gap-12 items-center sm:items-start text-center sm:text-left max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500 text-gray-900 dark:text-gray-100">
+      <main className="flex flex-col gap-16 items-center text-center sm:text-left max-w-screen-xl mx-auto py-8 px-4 sm:px-8">
         {/* Foto */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 animate__animated animate__fadeIn animate__delay-1s">
           <Image
-            src="/foto de claudio.svg" // Sua foto SVG no diretório public
-            alt="Claudio Lucas"
-            width={200}
-            height={150}
-            className="rounded-full shadow-lg border-4 border-white dark:border-gray-800"
+            src="/foto de claudio.svg"
+            alt="Foto de Claudio Lucas"
+            width={180}
+            height={180}
+            className="rounded-full shadow-2xl border-4 border-white dark:border-gray-800 transform transition duration-300 hover:scale-105"
+            priority
           />
         </div>
-        {/* Nome e descrição */}
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">Claudio Lucas Henrique Francisco Ribeiro</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+
+        {/* Nome e Descrição */}
+        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-gray-800 dark:text-white text-center animate__animated animate__fadeIn animate__delay-2s">
+          Claudio Lucas Henrique Francisco Ribeiro
+        </h1>
+        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-center mt-4 animate__animated animate__fadeIn animate__delay-2s">
           Analista de Desenvolvimento de Sistemas | Universitário na Universidade Braz Cubas
         </p>
-        <p className="text-md text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
-          Desenvolvedor apaixonado por tecnologia, sempre buscando inovar e criar soluções inteligentes. Explore meus
-          projetos e veja o que já desenvolvi!
+        <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-center mt-2 animate__animated animate__fadeIn animate__delay-3s">
+          Desenvolvedor apaixonado por tecnologia, sempre buscando inovar e criar soluções inteligentes. Explore meus projetos e veja o que já desenvolvi!
         </p>
 
-        {/* Links de navegação */}
-        <div className="flex gap-8 justify-center mt-6">
-          <Link
-            href="#about"
-            
-          >
-           
-          </Link>
-          <Link
-            href="#curriculum"
-            
-          >
-            
-          </Link>
-          <Link
-            href="#projects"
-            
-          >
-            
-          </Link>
-          <Link
-            href="#contact"
-            
-          >
-            
-          </Link>
-        </div>
+        {/* Navegação */}
+        <nav className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-8">
+          <Link href="#about" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
+          <Link href="#curriculum" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
+          <Link href="#projects" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
+          <Link href="#contact" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
+        </nav>
       </main>
 
-      {/* Seções do site (Sobre Mim, Currículo, Projetos, Contato) */}
-
+      {/* Seções */}
       {/* Sobre Mim */}
-      <section id="about" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Sobre Mim</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6 max-w-3xl mx-auto leading-relaxed">
-          Olá, eu sou o Claudio Lucas! 🚀
-          <br />
-          Sou um desenvolvedor apaixonado por tecnologia, sempre em busca de novas formas de transformar ideias em soluções inovadoras. Desde o início da minha jornada profissional, tenho me dedicado a aprimorar minhas habilidades e acompanhar as últimas tendências do mercado para entregar projetos de alta qualidade. Acredito que a chave para o sucesso está na inovação constante e na busca por desafios que me permitam evoluir a cada passo.
-          <br />
-          Com foco em desenvolvimento de sistemas e na criação de experiências digitais impactantes, meu objetivo é não apenas atender às necessidades do usuário, mas ir além, oferecendo soluções eficazes e criativas. Estou sempre aberto a novas oportunidades de aprendizado e colaboração. Se você também compartilha dessa visão e busca transformar o futuro com tecnologia, vamos conversar e criar algo extraordinário!
-        </p>
-
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6 max-w-2xl mx-auto">
-          Estou atualmente estudando na Universidade Braz Cubas e atuando como Analista de Desenvolvimento de Sistemas. Durante minha
-          trajetória, já desenvolvi diversos projetos, focando na criação de soluções inteligentes para problemas reais, sempre com uma
-          abordagem criativa e eficaz. Além disso, sou uma pessoa focada em resultados e na busca contínua pelo aprimoramento.
-        </p>
+      <section id="about" className="mt-32 py-16 px-4 sm:px-8 bg-white dark:bg-gray-800 shadow-xl rounded-xl border-t border-gray-200 dark:border-gray-700 transform transition-all duration-300 hover:scale-105">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-8">Sobre Mim</h2>
+        <div className="text-lg text-gray-700 dark:text-gray-300 text-center leading-relaxed max-w-4xl mx-auto space-y-4">
+          <p>
+            Olá, eu sou o Claudio Lucas! 🚀 Sou um desenvolvedor apaixonado por tecnologia, sempre em busca de novas formas de transformar ideias em soluções inovadoras. 
+          </p>
+          <p>
+            Com foco em desenvolvimento de sistemas e na criação de experiências digitais impactantes, meu objetivo é oferecer soluções eficazes e criativas. 
+          </p>
+          <p>
+            Atualmente estudo na Universidade Braz Cubas e atuo como Analista de Desenvolvimento de Sistemas, desenvolvendo projetos que transformam realidades!
+          </p>
+        </div>
       </section>
 
       {/* Currículo */}
-      <section id="curriculum" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Currículo</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
-          Estou sempre buscando aprimorar minhas habilidades e experiências para me tornar um profissional cada vez mais
-          completo. Abaixo, você encontra um resumo das minhas competências, qualificações e as experiências mais
-          relevantes que construí ao longo da minha jornada. Se você quiser saber mais ou conferir meu currículo completo,
-          basta fazer o download.
+      <section id="curriculum" className="mt-32 py-16 px-4 sm:px-8 bg-white dark:bg-gray-800 shadow-xl rounded-xl border-t border-gray-200 dark:border-gray-700 transform transition-all duration-300 hover:scale-105">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-8">Currículo</h2>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+          Um resumo das minhas competências, qualificações e experiências profissionais. Para mais detalhes:
         </p>
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center">
           <Link
             href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2025.docx"
             download
-            className="text-blue-500 hover:underline"
+            className="text-blue-500 font-medium hover:underline text-lg transition duration-300 transform hover:scale-105"
           >
-            Baixar Currículo (Word)
+            📄 Baixar Currículo (Word)
           </Link>
         </div>
       </section>
 
       {/* Projetos */}
-      <section id="projects" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Projetos</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
-          Veja alguns dos projetos que desenvolvi. Estou sempre em busca de novos desafios e oportunidades.
+      <section id="projects" className="mt-32 py-16 px-4 sm:px-8 bg-white dark:bg-gray-800 shadow-xl rounded-xl border-t border-gray-200 dark:border-gray-700 transform transition-all duration-300 hover:scale-105">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-8">Projetos</h2>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-16">
+          Veja alguns dos projetos que desenvolvi. Estou sempre em busca de novos desafios e oportunidades!
         </p>
 
-        {/* Projeto 1 */}
-        <div className="flex flex-col items-center gap-8 mb-16">
-          <div className="flex gap-4">
-            <Image
-              src="/projeto1-1.svg" // Primeira imagem do Projeto 1 em SVG
-              alt="Projeto 1 - Tela 1"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
-            <Image
-              src="/projeto1-2.svg" // Segunda imagem do Projeto 1 em SVG
-              alt="Projeto 1 - Tela 2"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
+        {/* Reutilizando estrutura de projeto */}
+        {[{ nome: "Plataforma de Vagas", desc: "Plataforma desenvolvida para auxiliar estudantes a encontrar vagas de estágio e emprego. O projeto foi implementado utilizando HTML e CSS para estruturar e estilizar a interface do usuário, JavaScript para tornar o site interativo, e PHP no back-end para gerenciar as requisições de usuários, além de realizar o processamento e armazenamento de dados.", imagens: ["/projeto1-1.svg", "/projeto1-2.svg"], link: "https://github.com/maximonGamer/Plataforma-de-vagas-" },
+          { nome: "Apollo Grill Vision", desc: "Aplicativo desenvolvido para facilitar a localização de unidades de restaurantes, exibição de menus e fornecimento de informações detalhadas sobre o funcionamento de cada estabelecimento. Criado com Flutter, proporcionando uma interface fluida e responsiva, e Firebase para gerenciamento de dados em tempo real, autenticação de usuários e armazenamento de informações, garantindo uma experiência dinâmica e personalizada para os usuários.", imagens: ["/projeto2-1.svg", "/projeto2-2.svg"], link: "https://www.canva.com/design/DAGR-Jh5L_c/GNNhrywfCb7-73htNDmTbw/edit?utm_content=DAGR-Jh5L_c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
+          { nome: "Jornal a Verdade", desc: "Portal de notícias moderno e responsivo, criado com HTML, CSS3 e JavaScript. O site foi desenvolvido com foco em proporcionar uma experiência acessível e fluida, oferecendo conteúdo relevante e atualizado para os usuários.", imagens: ["/projeto3-1.svg", "/projeto3-2.svg"], link: "https://github.com/maximonGamer/Universidade-UBC" }
+        ].map((projeto, idx) => (
+          <div key={idx} className="mb-16 text-center">
+            <div className="flex flex-wrap justify-center gap-8 mb-8">
+              {projeto.imagens.map((img, i) => (
+                <Image key={i} src={img} alt={`${projeto.nome} - Imagem ${i + 1}`} width={350} height={200} className="rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105" />
+              ))}
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{projeto.nome}</h3>
+            <p className="text-md text-gray-600 dark:text-gray-300 max-w-xl mx-auto my-2">{projeto.desc}</p>
+            <Link href={projeto.link} target="_blank" className="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 text-lg font-medium transition duration-300 transform hover:scale-105">
+              Ver Projeto
+            </Link>
           </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 1: Plataforma de Vagas</h3>
-          <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-            Uma plataforma desenvolvida para ajudar estudantes a encontrar vagas de estágio e emprego, com funcionalidades
-            de upload de currículo, pesquisa de vagas e visualização de detalhes. Foi desenvolvido usando React, Node.js
-            e MongoDB.
-          </p>
-        </div>
-
-        {/* Projeto 2 */}
-        <div className="flex flex-col items-center gap-8 mb-16">
-          <div className="flex gap-4">
-            <Image
-              src="/projeto2-1.svg" // Primeira imagem do Projeto 2 em SVG
-              alt="Projeto 2 - Tela 1"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
-            <Image
-              src="/projeto2-2.svg" // Segunda imagem do Projeto 2 em SVG
-              alt="Projeto 2 - Tela 2"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 2: Apollo Grill Vision</h3>
-          <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-            Um app para facilitar a localização das unidades dos restaurantes Apollo Grill, além de exibir cardápios e
-            informações sobre o funcionamento do sistema. Utiliza Flutter para o front-end e Firebase para o back-end.
-          </p>
-        </div>
-
-        {/* Projeto 3 */}
-        <div className="flex flex-col items-center gap-8 mb-16">
-          <div className="flex gap-4">
-            <Image
-              src="/projeto3-1.svg" // Primeira imagem do Projeto 3 em SVG
-              alt="Projeto 3 - Tela 1"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
-            <Image
-              src="/projeto3-2.svg" // Segunda imagem do Projeto 3 em SVG
-              alt="Projeto 3 - Tela 2"
-              width={400}
-              height={250}
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-          <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Projeto 3: Jornal a Verdade</h3>
-          <p className="text-md text-gray-600 dark:text-gray-300 max-w-lg text-center">
-            O site Jornal A Verdade foi desenvolvido com o objetivo de oferecer uma plataforma moderna e acessível para a divulgação de notícias e informações relevantes ao público. O projeto foi criado para garantir uma experiência intuitiva e dinâmica aos leitores, permitindo fácil navegação e acesso rápido às principais manchetes foi realizado com HTML , CSS , CSS3, JAVA SCRIPT.
-          </p>
-        </div>
+        ))}
       </section>
 
       {/* Contato */}
-      <section id="contact" className="mt-20 py-16 px-8 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-4">Contato</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 text-center mb-6">
-          Fique à vontade para me enviar uma mensagem! Se você tem um projeto ou ideia interessante, adoraria conversar
-          sobre como podemos colaborar.
+      <section id="contact" className="mt-32 py-16 px-4 sm:px-8 bg-white dark:bg-gray-800 shadow-xl rounded-xl border-t border-gray-200 dark:border-gray-700 transform transition-all duration-300 hover:scale-105">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-8">Contato</h2>
+        <p className="text-lg text-center text-gray-600 dark:text-gray-300 mb-8">
+          Tem um projeto ou ideia inovadora em mente? Vamos conversar e transformar suas ideias em realidade! Conecte-se comigo:
         </p>
-
-        <div className="flex justify-center gap-6">
-          <Link
-            href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/"
-            target="_blank"
-            className="text-blue-500 hover:underline"
-          >
-            LinkedIn
+        <div className="flex justify-center gap-8">
+          <Link href="https://www.linkedin.com/in/claudio-lucas-henrique-francisco-ribeiro-1a8148346/" target="_blank" className="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 text-2xl">
+            <FaLinkedin />
           </Link>
-          <Link
-            href="https://www.instagram.com/claudio_ribeirofh/"
-            target="_blank"
-            className="text-blue-500 hover:underline"
-          >
-            Instagram
+          <Link href="https://www.instagram.com/claudio_ribeirofh/" target="_blank" className="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 text-2xl">
+            <FaInstagram />
           </Link>
-          <Link
-            href="https://wa.me/5511998115005"
-            target="_blank"
-            className="text-blue-500 hover:underline"
-          >
-            WhatsApp
+          <Link href="https://wa.me/5511998115005" target="_blank" className="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 text-2xl">
+            <FaWhatsapp />
           </Link>
         </div>
       </section>
