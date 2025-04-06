@@ -228,15 +228,19 @@ export default function HeroSection() {
           Criando Experiências Inovadoras em Tecnologia Vision
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1.2 }}
-          className="mt-6 max-w-xl text-sm sm:text-base text-gray-300"
-        >
-          Engenheiro de Software Full Stack com experiência em Web, Mobile e Software.
-          Especialista em tecnologias modernas e focado em qualidade e performance.
-        </motion.p>
+        <div className="bg-black/50 p-6 rounded-xl max-w-3xl mx-auto">
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6, duration: 1.2 }}
+    className="text-white text-sm sm:text-base drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+  >
+    Engenheiro de Software Full Stack com experiência em Web, Mobile e Software.
+    Especialista em tecnologias modernas e focado em qualidade e performance.
+  </motion.p>
+</div>
+
+
       </div>
     </div>
   );
