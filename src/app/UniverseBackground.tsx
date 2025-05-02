@@ -2,17 +2,15 @@
 
 import { useEffect, useRef } from "react";
 
-interface CodeDrop {
+interface Star {
   x: number;
   y: number;
-  speed: number;
-  char: string;
-  alpha: number;
   size: number;
-  color: string;
+  speed: number;
+  opacity: number;
 }
 
-export default function CodeRainBackground() {
+export default function StarBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -20,90 +18,79 @@ export default function CodeRainBackground() {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d")!;
-    const codeDrops: CodeDrop[] = [];
-    const chars =
-      "1212321412335564645677547654786568445634234124124ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?{}[]|\\:;,.~`'\"";
-    const numDrops = 800; // Aumentando o número de gotas
+    const stars: Star[] = [];
+    const maxStars = window.innerWidth < 600 ? 150 : 300; // Ajuste do número de estrelas
 
-    // Função para gerar as gotas de código
-    const generateDrops = () => {
-      for (let i = 0; i < numDrops; i++) {
-        codeDrops.push({
+    // Função para gerar as estrelas
+    const generateStars = () => {
+      for (let i = 0; i < maxStars; i++) {
+        stars.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          speed: Math.random() * 3 + 2, // Mais variação na velocidade
-          char: chars.charAt(Math.floor(Math.random() * chars.length)),
-          alpha: Math.random() * 0.5 + 0.5,
-          size: Math.random() * 20 + 10, // Tamanho variável
-          color: `hsl(${Math.random() * 360}, 100%, 70%)`, // Cor variável com HSL
+          size: Math.random() * 2 + 1, // Tamanho das estrelas
+          speed: Math.random() * 0.5 + 0.2, // Velocidade aleatória
+          opacity: Math.random() * 0.5 + 0.5, // Opacidade aleatória para efeito mais sutil
         });
       }
     };
 
-    // Função para desenhar as gotas de código
-    const renderDrops = () => {
+    // Função para desenhar as estrelas
+    const renderStars = () => {
       if (!canvas) return;
 
       // Limpar o canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Fundo com sombra sutil
-      ctx.fillStyle = "rgba(13, 13, 13, 0.5)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Desenhando as gotas de código
-      codeDrops.forEach((drop) => {
-        drop.y += drop.speed;
-
-        // Se a gota ultrapassar a parte inferior da tela, reinicia a posição dela
-        if (drop.y > canvas.height) {
-          drop.y = -20;
-          drop.x = Math.random() * window.innerWidth;
+      // Desenhando as estrelas
+      stars.forEach((star) => {
+        // Efeito de movimento suave das estrelas
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0; // Reinicia a posição das estrelas no topo
         }
 
-        // Efeito de brilho neon e cor dinâmica
-        ctx.font = `${drop.size}px monospace`;
-        ctx.fillStyle = `rgba(255, 255, 255, ${drop.alpha})`; // Cor principal branca com brilho
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = drop.color; // A cor do brilho é diferente para cada gota
-        ctx.fillText(drop.char, drop.x, drop.y);
-
-        // Variação na transparência
-        drop.alpha += Math.random() * 0.05 - 0.025;
-        if (drop.alpha > 1) drop.alpha = 1;
-        if (drop.alpha < 0.2) drop.alpha = 0.2;
+        // Efeito de brilho suave das estrelas
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.shadowBlur = 10; // Cria um leve desfoque para suavizar o brilho
+        ctx.shadowColor = "white"; // Cor do brilho da estrela
+        ctx.fill();
       });
     };
 
-    // Função para redimensionar o canvas
-    const resizeCanvas = () => {
-      if (!canvas) return;
+    // Inicializando o canvas e as estrelas
+    const initCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    };
-
-    // Inicializando o canvas e os eventos
-    const initCanvas = () => {
-      resizeCanvas();
-      generateDrops();
-      renderDrops();
+      generateStars();
+      renderStars();
     };
 
     initCanvas();
 
     // Redimensionamento do canvas
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      renderStars();
+    });
 
-    // Repetindo a animação
-    const animate = () => {
-      renderDrops();
+    // Função de animação com throttle para otimizar a performance
+    let lastTime = 0;
+    const fps = 60; // Limitar a 60 FPS
+    const animate = (time: number) => {
+      if (time - lastTime > 1000 / fps) {
+        renderStars();
+        lastTime = time;
+      }
       requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(0);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", renderStars);
     };
   }, []);
 
@@ -111,6 +98,7 @@ export default function CodeRainBackground() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full z-[-1] bg-black"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }} // Fundo preto com leve transparência
     />
   );
 }

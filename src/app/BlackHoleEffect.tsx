@@ -3,7 +3,7 @@
 import React, { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useTexture } from '@react-three/drei';
-import { TextureLoader, Color } from 'three';
+import { TextureLoader } from 'three';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
@@ -65,6 +65,7 @@ function GlowRing() {
       meshRef.current.rotation.z += 0.001;
     }
   });
+
   return (
     <mesh ref={meshRef}>
       <ringGeometry args={[1.6, 2.5, 64]} />
@@ -138,8 +139,7 @@ function Starfield() {
             }
           `,
           transparent: true,
-        }]}
-      />
+        }]}/>
     </points>
   );
 }
@@ -194,7 +194,7 @@ export default function HeroSection() {
           {Array.from({ length: 15 }).map((_, i) => (
             <Meteor
               key={i}
-              startPosition={[
+              startPosition={[ 
                 THREE.MathUtils.randFloatSpread(100),
                 Math.random() * 20 + 10,
                 THREE.MathUtils.randFloatSpread(100)
@@ -228,15 +228,19 @@ export default function HeroSection() {
           Criando Experiências Inovadoras em Tecnologia Vision
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1.2 }}
-          className="mt-6 max-w-xl text-sm sm:text-base text-gray-300"
-        >
-          Engenheiro de Software Full Stack com experiência em Web, Mobile e Software.
-          Especialista em tecnologias modernas e focado em qualidade e performance.
-        </motion.p>
+        <div className="bg-black/50 p-6 rounded-xl max-w-3xl mx-auto">
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6, duration: 1.2 }}
+    className="text-white text-sm sm:text-base drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+  >
+    Engenheiro de Software Full Stack com experiência em Web, Mobile e Software.
+    Especialista em tecnologias modernas e focado em qualidade e performance.
+  </motion.p>
+</div>
+
+
       </div>
     </div>
   );
