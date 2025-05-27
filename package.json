@@ -13,6 +13,7 @@
     "@react-three/fiber": "^9.1.1",
     "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.6.3",
+    "jspdf": "^3.0.1",
     "next": "^15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -29,13 +29,7 @@ export default function Home() {
           Desenvolvedor apaixonado por tecnologia, sempre buscando inovar e criar soluções inteligentes. Explore meus projetos e veja o que já desenvolvi!
         </p>
 
-        {/* Navegação */}
-        <nav className="flex flex-wrap justify-center gap-6 sm:gap-8 mt-8">
-          <Link href="#about" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
-          <Link href="#curriculum" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
-          <Link href="#projects" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
-          <Link href="#contact" className="text-white hover:text-gray-200 text-lg font-medium transition duration-300 transform hover:scale-105"></Link>
-        </nav>
+     
       </main>
 
       {/* Seções */}
@@ -63,7 +57,7 @@ export default function Home() {
         </p>
         <div className="flex justify-center">
           <Link
-            href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2025.docx"
+            href="/CLAUDIO LUCAS HENRIQUE FRANCISCO RIBEIRO 2026.docx"
             download
             className="text-blue-500 font-medium hover:underline text-lg transition duration-300 transform hover:scale-105"
           >
