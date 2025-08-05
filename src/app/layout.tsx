@@ -58,23 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BlackHoleEffect />
         </div>
 
-        <section className="w-full flex flex-wrap justify-center gap-6 py-12 bg-[#121212]">
-          <SiHtml5 className="text-orange-500 text-5xl" />
-          <SiCss3 className="text-blue-600 text-5xl" />
-          <SiJavascript className="text-yellow-400 text-5xl" />
-          <SiTypescript className="text-blue-400 text-5xl" />
-          <SiReact className="text-cyan-400 text-5xl" />
-          <SiNextdotjs className="text-gray-400 text-5xl" />
-          <SiTailwindcss className="text-teal-400 text-5xl" />
-          <SiPhp className="text-purple-500 text-5xl" />
-          <SiPython className="text-blue-500 text-5xl" />
-          <SiC className="text-white text-5xl" />
-          <SiFlutter className="text-blue-400 text-5xl" />
-          <SiNodedotjs className="text-green-500 text-5xl" />
-          <SiMysql className="text-blue-700 text-5xl" />
-          <SiMongodb className="text-green-600 text-5xl" />
-          <SiFirebase className="text-yellow-500 text-5xl" />
-        </section>
+  
 
         <main className="min-h-screen pt-24 px-6 bg-gradient-to-b from-[#121212] to-[#0D0D0D] flex flex-col items-center justify-center">
           {children}

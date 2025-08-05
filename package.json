@@ -1,6 +1,6 @@
 {
   "name": "meu-portfolio",
-  "version": "0.1.0",
+  "version": "0.3.0 (final)",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.0.5",
-    "@react-three/fiber": "^9.1.1",
+    "@react-three/drei": "^10.6.1",
+    "@react-three/fiber": "^9.3.0",
     "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.6.3",
     "jspdf": "^3.0.1",
