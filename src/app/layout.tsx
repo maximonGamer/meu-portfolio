@@ -5,24 +5,13 @@ import "./globals.css";
 import BlackHoleEffect from "@/app/BlackHoleEffect";
 import UniverseBackground from "@/app/UniverseBackground";
 
+// Ícones usados no footer
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import {
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiNextdotjs,
-  SiPhp,
-  SiPython,
-  SiC,
-  SiFlutter,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMysql,
-  SiMongodb,
-  SiFirebase,
-} from "react-icons/si";
+
+// ÍCONES NÃO UTILIZADOS REMOVIDOS DESTE ARQUIVO
+// Os ícones de tecnologia (SiJavascript, SiTypescript, etc.) foram removidos
+// porque não são usados aqui. Eles devem ser importados no arquivo page.tsx
+// ou onde quer que sua seção de "habilidades" esteja.
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,8 +47,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BlackHoleEffect />
         </div>
 
-  
-
         <main className="min-h-screen pt-24 px-6 bg-gradient-to-b from-[#121212] to-[#0D0D0D] flex flex-col items-center justify-center">
           {children}
         </main>
@@ -77,12 +64,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
 
         <div className="copyright-warning text-center py-6 text-sm text-gray-400 mt-12">
-        <p className="text-center text-sm text-gray-400 mt-6">
-  <span className="block mb-2 text-gray-300">© 2025 Claudio Lucas - Tecnologia Vision . Todos os direitos reservados.</span>
-  <span className="block font-bold text-gray-200">
-    Este conteúdo é protegido por direitos autorais e não pode ser copiado, reproduzido ou distribuído sem permissão.
-  </span>
-</p>
+          <p className="text-center text-sm text-gray-400 mt-6">
+            <span className="block mb-2 text-gray-300">© 2025 Claudio Lucas - Tecnologia Vision . Todos os direitos reservados.</span>
+            <span className="block font-bold text-gray-200">
+              Este conteúdo é protegido por direitos autorais e não pode ser copiado, reproduzido ou distribuído sem permissão.
+            </span>
+          </p>
         </div>
       </body>
     </html>
