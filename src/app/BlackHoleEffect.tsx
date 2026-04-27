@@ -2,246 +2,185 @@
 
 import React, { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useTexture } from '@react-three/drei';
-import { TextureLoader } from 'three';
+import { OrbitControls, useTexture, Stars, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
-// 🌍 Planeta
-function Planet({ texturePath, size, distance, speed }: {
-  texturePath: string;
-  size: number;
-  distance: number;
-  speed: number;
-}) {
-  const texture = useMemo(() => new TextureLoader().load(texturePath), [texturePath]);
+// --- CONFIGURAÇÃO DOS PLANETAS ---
+// Centralizamos os dados para facilitar a manutenção (Padrão Clean Code)
+const PLANETS_DATA = [
+  { name: 'Venus', texture: '/textures/2k_venus_surface.jpg', size: 0.28, distance: 3.5, speed: 0.35 },
+  { name: 'Earth', texture: '/textures/2k_earth_daymap.jpg', size: 0.3, distance: 5, speed: 0.3 },
+  { name: 'Mars', texture: '/textures/2k_mars.jpg', size: 0.25, distance: 6.5, speed: 0.25 },
+  { name: 'Jupiter', texture: '/textures/2k_jupiter.jpg', size: 0.6, distance: 9, speed: 0.15 },
+  { name: 'Saturn', texture: '/textures/2k_saturn.jpg', size: 0.5, distance: 11.5, speed: 0.12 },
+  { name: 'Uranus', texture: '/textures/2k_uranus.jpg', size: 0.4, distance: 14, speed: 0.1 },
+  { name: 'Neptune', texture: '/textures/2k_neptune.jpg', size: 0.38, distance: 16, speed: 0.08 },
+];
+
+// 🌍 Componente Planeta Otimizado
+function Planet({ texturePath, size, distance, speed }: { texturePath: string; size: number; distance: number; speed: number }) {
+  const texture = useTexture(texturePath);
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed;
     if (meshRef.current) {
+      // Movimento orbital (Trigonométrico)
       meshRef.current.position.x = Math.cos(t) * distance;
       meshRef.current.position.z = Math.sin(t) * distance;
-      meshRef.current.rotation.y += 0.01;
+      // Rotação axial (Giro do planeta)
+      meshRef.current.rotation.y += 0.005;
     }
   });
 
   return (
     <mesh ref={meshRef}>
       <sphereGeometry args={[size, 32, 32]} />
-      <meshStandardMaterial map={texture} />
+      <meshStandardMaterial map={texture} roughness={0.8} metalness={0.1} />
     </mesh>
   );
 }
 
-// ☀️ Sol
+// ☀️ Sol: O centro do sistema e fonte de luz
 function Sun() {
   const texture = useTexture('/textures/2k_sun.jpg');
-  const meshRef = useRef<THREE.Mesh>(null);
+  const sunRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.002;
-    }
+    if (sunRef.current) sunRef.current.rotation.y += 0.002;
   });
 
   return (
-    <mesh ref={meshRef}>
-      <sphereGeometry args={[1.5, 64, 64]} />
-      <meshStandardMaterial
-        map={texture}
-        emissive={'orange'}
-        emissiveIntensity={1.2}
-      />
-    </mesh>
+    <group>
+      <mesh ref={sunRef}>
+        <sphereGeometry args={[1.5, 64, 64]} />
+        <meshStandardMaterial 
+          map={texture} 
+          emissive={new THREE.Color('#ff5500')} 
+          emissiveIntensity={2} 
+        />
+      </mesh>
+      {/* Luz que ilumina os planetas lateralmente */}
+      <pointLight intensity={150} distance={50} decay={2} color="#ffcc33" />
+    </group>
   );
 }
 
-// 🔆 Anel do Sol
-function GlowRing() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.z += 0.001;
-    }
-  });
-
-  return (
-    <mesh ref={meshRef}>
-      <ringGeometry args={[1.6, 2.5, 64]} />
-      <meshBasicMaterial color="orange" side={THREE.DoubleSide} transparent opacity={0.25} />
-    </mesh>
-  );
-}
-
-// 🌌 Estrelas realistas
-function Starfield() {
-  const starCount = 6000;
-  const positions = useMemo(() => {
-    const posArray = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      posArray[i] = THREE.MathUtils.randFloatSpread(400);
-    }
-    return posArray;
-  }, []);
-
-  const sizes = useMemo(() => {
-    const sizeArray = new Float32Array(starCount);
-    for (let i = 0; i < starCount; i++) {
-      sizeArray[i] = Math.random() * 1.8 + 0.2;
-    }
-    return sizeArray;
-  }, []);
-
-  const geometry = useMemo(() => {
-    const geom = new THREE.BufferGeometry();
-    geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geom.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-    return geom;
-  }, [positions, sizes]);
-
-  const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const pointsRef = useRef<THREE.Points>(null);
-
-  useFrame(({ clock }) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.01;
-    }
-    if (materialRef.current) {
-      materialRef.current.uniforms.time.value = clock.getElapsedTime();
-    }
-  });
-
-  return (
-    <points ref={pointsRef} geometry={geometry}>
-      <shaderMaterial
-        ref={materialRef}
-        attach="material"
-        args={[{
-          uniforms: {
-            time: { value: 0 },
-          },
-          vertexShader: `
-            attribute float size;
-            varying float vOpacity;
-            void main() {
-              vOpacity = size;
-              vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-              gl_PointSize = size * (300.0 / -mvPosition.z);
-              gl_Position = projectionMatrix * mvPosition;
-            }
-          `,
-          fragmentShader: `
-            varying float vOpacity;
-            void main() {
-              float alpha = smoothstep(1.0, 0.0, length(gl_PointCoord - vec2(0.5)));
-              gl_FragColor = vec4(1.0, 1.0, 1.0, alpha * vOpacity);
-            }
-          `,
-          transparent: true,
-        }]}/>
-    </points>
-  );
-}
-
-// ☄️ Meteoritos com cauda flamejante
-function Meteor({ startPosition, speed, scale }: {
-  startPosition: [number, number, number],
-  speed: number,
-  scale: number
-}) {
-  const meshRef = useRef<THREE.Mesh>(null);
+// ☄️ Chuva de Meteoros (Processamento centralizado para alta performance)
+function MeteorShower({ count = 12 }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const meteors = useMemo(() => 
+    Array.from({ length: count }, () => ({
+      pos: new THREE.Vector3(THREE.MathUtils.randFloatSpread(100), Math.random() * 20 + 10, THREE.MathUtils.randFloatSpread(100)),
+      speed: Math.random() * 0.1 + 0.05,
+      scale: Math.random() * 0.5 + 0.2
+    }))
+  , [count]);
 
   useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.position.x += speed;
-      meshRef.current.position.y -= speed * 0.4;
-      meshRef.current.rotation.x += 0.02;
-      meshRef.current.rotation.y += 0.01;
-
-      if (meshRef.current.position.x > 50 || meshRef.current.position.y < -50) {
-        meshRef.current.position.set(
-          THREE.MathUtils.randFloatSpread(100) - 50,
-          30 + Math.random() * 10,
-          THREE.MathUtils.randFloatSpread(100)
-        );
-      }
+    if (groupRef.current) {
+      groupRef.current.children.forEach((child, i) => {
+        child.position.x += meteors[i].speed;
+        child.position.y -= meteors[i].speed * 0.5;
+        child.rotation.x += 0.01;
+        
+        // Reset infinito dos meteoros
+        if (child.position.y < -25) child.position.y = 35;
+        if (child.position.x > 50) child.position.x = -50;
+      });
     }
   });
 
   return (
-    <mesh ref={meshRef} position={startPosition}>
-      <coneGeometry args={[0.1 * scale, 0.4 * scale, 8]} />
-      <meshStandardMaterial color="orange" emissive="red" emissiveIntensity={1.5} />
-    </mesh>
+    <group ref={groupRef}>
+      {meteors.map((m, i) => (
+        <mesh key={i} position={m.pos} scale={m.scale}>
+          <coneGeometry args={[0.2, 0.8, 4]} />
+          <meshStandardMaterial color="#ff4400" emissive="#ff0000" emissiveIntensity={2} />
+        </mesh>
+      ))}
+    </group>
   );
 }
 
-// 🌟 HeroSection final
+// 🌟 Componente Principal da Seção Hero
 export default function HeroSection() {
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black text-white">
-      <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
+    <div className="relative w-full h-screen overflow-hidden bg-[#020205]">
+      
+      {/* CANVAS 3D - Camada de Fundo */}
+      <Canvas dpr={[1, 2]}>
+        <PerspectiveCamera makeDefault position={[0, 8, 20]} fov={55} />
+        <OrbitControls 
+          enableZoom={false} 
+          enablePan={false} 
+          maxPolarAngle={Math.PI / 1.8} 
+          minPolarAngle={Math.PI / 2.5} 
+        />
+        
         <Suspense fallback={null}>
-          <ambientLight intensity={0.3} />
-          <pointLight position={[0, 0, 0]} intensity={3} />
-
+          <ambientLight intensity={0.2} />
+          
+          {/* Estrelas do Drei (Super leves) */}
+          <Stars radius={100} depth={50} count={7000} factor={4} saturation={0} fade speed={1} />
+          
           <Sun />
-          <GlowRing />
-          <Starfield />
+          <MeteorShower />
 
-          {/* Meteoritos */}
-          {Array.from({ length: 15 }).map((_, i) => (
-            <Meteor
-              key={i}
-              startPosition={[ 
-                THREE.MathUtils.randFloatSpread(100),
-                Math.random() * 20 + 10,
-                THREE.MathUtils.randFloatSpread(100)
-              ]}
-              speed={Math.random() * 0.1 + 0.05}
-              scale={Math.random() * 1.5 + 0.5}
+          {PLANETS_DATA.map((planet) => (
+            <Planet 
+              key={planet.name}
+              texturePath={planet.texture} 
+              size={planet.size} 
+              distance={planet.distance} 
+              speed={planet.speed} 
             />
           ))}
-
-          {/* Planetas */}
-          <Planet texturePath="/textures/2k_earth_daymap.jpg" size={0.3} distance={4} speed={0.4} />
-          <Planet texturePath="/textures/2k_mars.jpg" size={0.25} distance={5.5} speed={0.3} />
-          <Planet texturePath="/textures/2k_jupiter.jpg" size={0.6} distance={7} speed={0.2} />
-          <Planet texturePath="/textures/2k_venus_surface.jpg" size={0.28} distance={3.5} speed={0.35} />
-          <Planet texturePath="/textures/2k_saturn.jpg" size={0.5} distance={8.5} speed={0.15} />
-          <Planet texturePath="/textures/2k_uranus.jpg" size={0.4} distance={10} speed={0.12} />
-          <Planet texturePath="/textures/2k_neptune.jpg" size={0.38} distance={11.5} speed={0.1} />
-
-          <OrbitControls enableZoom={false} enablePan={false} />
         </Suspense>
       </Canvas>
 
-      {/* Textos sobrepostos */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
+      {/* OVERLAY DE INTERFACE - Camada Superior */}
+      {/* pointer-events-none permite interagir com o 3D através do texto */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+        
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
-          className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-transparent bg-clip-text drop-shadow-xl"
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="mb-10"
         >
-          Criando Experiências Inovadoras em Tecnologia Vision
-        </motion.h1>
+          <h1 className="text-5xl sm:text-8xl font-black tracking-tighter">
+            <span className="text-white drop-shadow-2xl">TECNOLOGIA</span>{' '}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-transparent bg-clip-text animate-pulse">
+              VISION
+            </span>
+          </h1>
+          <p className="text-gray-400 text-xs sm:text-base tracking-[0.5em] uppercase mt-4 opacity-80">
+            Inovação | Tecnologia | Compreensão
+          </p>
+        </motion.div>
 
-        <div className="bg-black/50 p-6 rounded-xl max-w-3xl mx-auto">
-  <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.6, duration: 1.2 }}
-    className="text-white text-sm sm:text-base drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
-  >
-    Engenheiro de Software Full Stack com experiência em Web, Mobile e Software.
-    Especialista em tecnologias modernas e focado em qualidade e performance.
-  </motion.p>
-</div>
-
+        <motion.div 
+          className="bg-black/30 backdrop-blur-md p-8 rounded-3xl border border-white/10 max-w-3xl shadow-2xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        >
+          <h2 className="text-white text-2xl sm:text-3xl font-bold mb-4">
+            Analista e Desenvolvedor de Sistemas
+          </h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mb-6 rounded-full" />
+          <p className="text-gray-200 text-base sm:text-lg leading-relaxed font-light">
+            <span className="text-cyan-400 font-semibold">Full Stack Developer</span> • Especialista em criar soluções inovadoras para Web e Mobile, unindo rigor acadêmico e performance técnica.
+          </p>
+        </motion.div>
 
       </div>
+
+      {/* EFEITO DE VINHETA (Escurece as bordas para focar no centro) */}
+      <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_180px_rgba(0,0,0,1)]" />
+
     </div>
   );
 }
